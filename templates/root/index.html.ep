@@ -1,0 +1,34 @@
+% layout 'default';
+
+% if (my $twitter = $self->session('twitter')) {
+<p>
+@<%= $twitter->{screen_name} %> さんこんにちは！
+% if (my $user = $self->user) {
+あなたのIDは <b><a href="/<%= $user->id %>"><%= $user->id %></a></b> です！
+</p>
+<p>
+  <a href="/profile">プロフィールを編集する</a>
+  / <a href="/logout">ログアウトする</a>
+</p>
+% }else{
+<form action="/register" method="post">
+  <button>参加登録をする</button>
+  <a href="/logout">ログアウトする</a>
+</form>
+% }
+% }else {
+<p>
+  <a href="/login/twitter">Twitterログインをする</a>
+</p>
+% }
+
+<hr />
+<h3>登録者一覧</h3>
+
+% for my $u (@$users) {
+<div style="float:left; width:120px;text-align:center;">
+<a href="/<%= $u->id %>"><img src="<%= $u->image_url %>" style="padding:1px;border:1px solid #ccc;"/></a>
+<div><a href="/<%= $u->id %>">@<%= $u->screen_name %></a></div>
+</div>
+% }
+<div style="clear:both"></div>

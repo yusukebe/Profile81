@@ -1,0 +1,40 @@
+% layout 'default';
+
+<h3>プロフィール編集</h3>
+
+% if(my $messages = $self->stash->{error_messages}) {
+% for my $message (@$messages) {
+<%= $message %>
+% }
+% }
+
+<form action="/profile" method="post">
+<label>自己紹介</label>
+% if ($profile) { 
+  <textarea name="body" style="height:150px;"><%= $profile->body %></textarea>
+% }else{
+  <textarea name="body" style="height:150px;"></textarea>
+% }
+<label>Facebook Name</label>
+<input type="text" name="facebook_name" value="<% if ($profile) { %><%= $profile->facebook_name %><% } %>"
+       placeholder="http://www.facebook.com/ここを入力"/>
+<label>タグ</label>
+<input type="text" name="tags_text" id="tag-input"
+value="<% for my $t (@$profile_tags) { %><%= $t->tag_label %>&nbsp;<% } %>"
+placeholder="タグをスペース区切りで入力"/>
+
+% if (@$recommend_tags) {
+<h4>人気のタグ</h4>
+% for my $tag (@$recommend_tags) {
+<span class="button recommend-tag"><%= $tag->label %></span>
+% }
+% }
+
+<hr />
+<button class="secondary button">登録</button>
+</form>
+
+<hr />
+<form action="/profile/delete" method="post">
+<button class="secondary button">プロフィールを削除する</button>
+</form>

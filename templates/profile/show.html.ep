@@ -1,0 +1,29 @@
+% layout 'default';
+% title '@' . $target_user->screen_name;
+
+<h3><img src="<%= $target_user->image_url %>" align="middle"/>&nbsp;<a href="http://twitter.com/<%= $target_user->screen_name %>" target="_blank">@<%= $target_user->screen_name %>さん</a>のプロフィール</h3>
+% if ($profile) {
+<p>
+  <%= $profile->body %>
+</p>
+% }
+
+% if($profile) {
+<h4>Facebook</h4>
+<p>
+<a href="http://www.facebook.com/<% if ($profile) { %><%= $profile->facebook_name %><% } %>">http://www.facebook.com/<%= $profile->facebook_name %></a>
+</p>
+% }
+
+% if (@$profile_tags) {
+<h4>タグ</h4>
+<p>
+% for my $tag (@$profile_tags) {
+<a class="button" href="/tag/<%= b($tag->tag_name)->encode->url_escape %>"><%= $tag->tag_label %></a>
+% }
+</p>
+% }
+
+% if ($self->user && $target_user->id eq $self->user->id ) {
+<a href="/profile" class="secondary button">編集する</a>
+% }
