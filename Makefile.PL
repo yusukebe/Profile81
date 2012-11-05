@@ -1,7 +1,7 @@
 use inc::Module::Install;
 
 name 'Profile81';
-all_from 'lib/Profil81.pm';
+all_from 'lib/Profile81.pm';
 
 requires 'Mojolicious' => '3.0';
 requires 'Net::Twitter::Lite';
