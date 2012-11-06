@@ -5,7 +5,6 @@ use File::Spec;
 use File::Basename;
 use lib File::Spec->catdir(dirname(__FILE__), 'lib');
 use Plack::Builder;
-use Plack::Session::Store::DBI;
 use Profile81::Web;
 
 $ENV{MOJO_APP} = 'Profile81::Web';
