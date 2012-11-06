@@ -6,6 +6,7 @@ use FormValidator::Lite;
 use HTML::FillInForm::Lite;
 use Encode;
 use Text::Tags::Parser;
+use LWP::UserAgent;
 use utf8;
 
 sub index {
@@ -45,6 +46,10 @@ sub edit {
         }
         $self->stash->{profile} = $db->single('profile', { user_id => $user->id});
         $self->stash->{error_messages} = \@error_messages;
+        my @profile_tags = $db->search('profile_tag', { user_id => $user->id });
+        $self->stash->{profile_tags} = \@profile_tags;
+        my @recommend_tags = $db->search('tag', {}, { limit => 40, order_by => 'user_count desc' });
+        $self->stash->{recommend_tags} = \@recommend_tags;
         my $html = $self->render_partial('/profile/index')->to_string;
         return $self->render_text(
             HTML::FillInForm::Lite->fill(\$html, $self->req->params),
@@ -52,6 +57,25 @@ sub edit {
         );
     }
     
+    if(my $facebook_name = $self->req->param('facebook_name')) {
+        my $ua = LWP::UserAgent->new;
+        my $res = $ua->get('https://graph.facebook.com/' . $facebook_name);
+        if($res->is_error) {
+            push @error_messages, '有効なFacebook Nameではありません';
+            $self->stash->{profile} = $db->single('profile', { user_id => $user->id});
+            $self->stash->{error_messages} = \@error_messages;
+            my @profile_tags = $db->search('profile_tag', { user_id => $user->id });
+            $self->stash->{profile_tags} = \@profile_tags;
+            my @recommend_tags = $db->search('tag', {}, { limit => 40, order_by => 'user_count desc' });
+            $self->stash->{recommend_tags} = \@recommend_tags;
+            my $html = $self->render_partial('/profile/index')->to_string;
+            return $self->render_text(
+                HTML::FillInForm::Lite->fill(\$html, $self->req->params),
+                format => 'html'
+            );
+        }
+    }
+
     my $txn = $db->txn_scope;
 
     my $now = DateTime::Format::MySQL->format_datetime(DateTime->now( time_zone => 'Asia/Tokyo' ));

@@ -3,9 +3,11 @@
 <h3>プロフィール編集</h3>
 
 % if(my $messages = $self->stash->{error_messages}) {
+<div class="alert-box alert">
 % for my $message (@$messages) {
-<%= $message %>
+<%= $message %><br />
 % }
+</div>
 % }
 
 <form action="/profile" method="post">
@@ -20,7 +22,8 @@
        placeholder="http://www.facebook.com/ここを入力（例）yusuke.wada"/>
 <label>タグ</label>
 <input type="text" name="tags_text" id="tag-input"
-value="<% for my $t (@$profile_tags) { %><%= $t->tag_label %>&nbsp;<% } %>"
+value="<% for my $t (@$profile_tags) { if($t->tag_label =~ /^.+\s.+$/) { %>&quot;<%= $t->tag_label %>&quot;<% }else { 
+%><%= $t->tag_label %>&nbsp;<% } } %>"
 placeholder="タグをスペース区切りで入力"/>
 
 % if (@$recommend_tags) {
