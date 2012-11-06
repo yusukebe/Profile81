@@ -78,6 +78,7 @@ sub edit {
     my @tags = Text::Tags::Parser->new->parse_tags($self->req->param('tags_text'));
 
     for my $tag (@tags) {
+        next if $tag =~ /^\s+$/;
         if ( $db->single('tag', { tag_name => lc $tag } ) ) {
         }else{
             $db->insert('tag',{
