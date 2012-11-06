@@ -35,7 +35,7 @@
       <div class="alert-box">
         1981年生忘年会向けWebアプリです。
         Twitter アカウントでログインして事前に自己紹介をしておきましょう。
-        また当日会場では本サイトで発行される短い数字のIDを教え合うことが出来ます。
+        また当日会場では本サイトで発行される短い数字のNo.を教え合うことでプロフィールが簡単に閲覧出来ます。
       </div>
       <div class="alert-box alert">
         現在、テスト版です。本番サイトにするに当たって、データがぶっ飛びますことご了承ください。
@@ -43,7 +43,7 @@
       <form action="/search" method="get">
         <input type="text" name="id"/>
         <button class="secondary button">
-          IDで検索
+          No.で検索
         </button>
       </form>
       <hr />

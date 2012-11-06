@@ -4,7 +4,7 @@
 <p>
 @<%= $twitter->{screen_name} %> さんこんにちは！
 % if (my $user = $self->user) {
-あなたのIDは <b><a href="/<%= $user->id %>"><%= $user->id %></a></b> です！
+あなたのNo.は <b><a href="/<%= $user->id %>"><%= $user->id %></a></b> です！
 </p>
 <p>
   <a href="/profile">プロフィールを編集する</a>
