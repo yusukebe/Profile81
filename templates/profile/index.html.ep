@@ -17,7 +17,7 @@
 % }
 <label>Facebook Name</label>
 <input type="text" name="facebook_name" value="<% if ($profile) { %><%= $profile->facebook_name %><% } %>"
-       placeholder="http://www.facebook.com/ここを入力"/>
+       placeholder="http://www.facebook.com/ここを入力（例）yusuke.wada"/>
 <label>タグ</label>
 <input type="text" name="tags_text" id="tag-input"
 value="<% for my $t (@$profile_tags) { %><%= $t->tag_label %>&nbsp;<% } %>"
