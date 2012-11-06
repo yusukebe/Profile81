@@ -6,10 +6,10 @@ use File::Basename;
 use lib File::Spec->catdir(dirname(__FILE__), 'lib');
 use Plack::Builder;
 use Plack::Session::Store::DBI;
-use Profile::Web;
+use Profile81::Web;
 
-$ENV{MOJO_APP} = 'Profile::Web';
-my $psgi = Mojo::Server::PSGI->new( app => Profile::Web->new );
+$ENV{MOJO_APP} = 'Profile81::Web';
+my $psgi = Mojo::Server::PSGI->new( app => Profile81::Web->new );
 my $app = sub { $psgi->run(@_) };
 
 builder {
