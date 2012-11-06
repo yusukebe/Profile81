@@ -26,7 +26,7 @@
 <h3>登録者一覧</h3>
 
 % for my $u (@$users) {
-<div style="float:left; width:120px;text-align:center;">
+<div style="float:left; width:100px;height:100px;text-align:center;">
 <a href="/<%= $u->id %>"><img src="<%= $u->image_url %>" style="padding:1px;border:1px solid #ccc;"/></a>
 <div><a href="/<%= $u->id %>">@<%= $u->screen_name %></a></div>
 </div>
