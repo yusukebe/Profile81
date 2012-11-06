@@ -39,5 +39,5 @@ placeholder="タグをスペース区切りで入力"/>
 
 <hr />
 <form action="/profile/delete" method="post">
-<button class="secondary button">プロフィールを削除する</button>
+  <button id="profile-delete" class="secondary button">プロフィールを削除する</button>
 </form>
