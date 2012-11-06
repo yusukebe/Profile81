@@ -5,6 +5,8 @@
 % if ($profile) {
 % my $body = b($profile->body)->html_escape()->to_string;
 % $body =~ s!\n!<br />!g;
+% my $re = qr/https?:\/\/[-_.!~*'()a-zA-Z0-9;\/?:\@&=+\$,%#]+/;
+% $body =~ s/($re)/<a href="$1" target="_blank">$1<\/a>/;
 <p>
 <%== $body %>
 </p>
