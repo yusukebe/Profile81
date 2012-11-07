@@ -37,9 +37,6 @@
         Twitter アカウントでログインして事前に自己紹介をしておきましょう。
         また当日会場では本サイトで発行される短い数字のNo.を教え合うことでプロフィールが簡単に閲覧出来ます。
       </div>
-      <div class="alert-box alert">
-        現在、テスト版です。本番サイトにするに当たって、データがぶっ飛びますことご了承ください。
-      </div>
       <form action="/search" method="get">
         <input type="text" name="id"/>
         <button class="secondary button">
@@ -62,6 +59,7 @@
         ハチイチ忘年会 2012 - 12月8日(土)
         / 不具合、要望等は <a href="http://twitter.com/yusukebe">@yusukebe</a> までご連絡ください
       </address>
+      <br /><br />
     </div>
   </div>
 
