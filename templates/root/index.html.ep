@@ -33,3 +33,9 @@
 </div>
 % }
 <div style="clear:both"></div>
+
+<h3>タグ一覧</h3>
+
+% for my $t (@$tags) {
+<a href="/tag/<%= b($t->tag_name)->encode->url_escape %>"><span class="round label"><%= $t->label %></span></a>
+% }

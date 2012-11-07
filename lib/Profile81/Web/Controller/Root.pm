@@ -5,6 +5,8 @@ sub index {
     my $self = shift;
     my @users = $self->db->search('user', {}, { order_by => 'id desc' });
     $self->stash->{users} = \@users;
+    my @tags = $self->db->search('tag', {}, {});
+    $self->stash->{tags} = \@tags;
 }
 
 sub search {
