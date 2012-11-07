@@ -17,7 +17,9 @@ No.<%= $target_user->id %>&nbsp;
 % if($profile && $profile->facebook_name) {
 <h4>Facebook</h4>
 <p>
-<a href="http://www.facebook.com/<% if ($profile) { %><%= $profile->facebook_name %><% } %>" target="_blank">http://www.facebook.com/<%= $profile->facebook_name %></a>
+% my $facebook_name = $profile->facebook_name;
+% $facebook_name =~ s!^https?://www.facebook.com/!!;
+<a href="http://www.facebook.com/<% if ($profile) { %><%= $facebook_name %><% } %>" target="_blank">http://www.facebook.com/<%= $facebook_name %></a>
 </p>
 % }
 
