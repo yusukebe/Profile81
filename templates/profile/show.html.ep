@@ -1,7 +1,9 @@
 % layout 'default';
 % title '@' . $target_user->screen_name;
 
-<h3><img src="<%= $target_user->image_url %>" align="middle"/>&nbsp;<a href="http://twitter.com/<%= $target_user->screen_name %>" target="_blank">@<%= $target_user->screen_name %>さん</a>のプロフィール</h3>
+<h3><img src="<%= $target_user->image_url %>" align="middle"/>&nbsp;
+No.<%= $target_user->id %>&nbsp;
+<a href="http://twitter.com/<%= $target_user->screen_name %>" target="_blank">@<%= $target_user->screen_name %>さん</a>のプロフィール</h3>
 % if ($profile) {
 % my $body = b($profile->body)->html_escape()->to_string;
 % $body =~ s!\n!<br />!g;
