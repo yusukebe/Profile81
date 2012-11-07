@@ -5,6 +5,7 @@
 @<%= $twitter->{screen_name} %> さんこんにちは！
 % if (my $user = $self->user) {
 あなたのNo.は <b><a href="/<%= $user->id %>"><%= $user->id %></a></b> です！
+プロフィール編集がまだの方は下記のリンクからプロフィールを登録してください。
 </p>
 <p>
   <a href="/profile">プロフィールを編集する</a>
