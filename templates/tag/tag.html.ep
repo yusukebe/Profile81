@@ -4,9 +4,10 @@
 <h3><%= $tag->label %>を登録している人</h3>
 
 % for my $u (@$users) {
-<div style="float:left; width:80px;height:100px;text-align:center;">
-<a href="/<%= $u->id %>"><img src="<%= $u->image_url %>" style="padding:1px;border:1px solid #ccc;"/></a>
-<div><a href="/<%= $u->id %>">@<%= $u->screen_name %></a></div>
+<div style="float:left; width:90px;height:110px;text-align:center;">
+<div><b><%= $u->id %></b></div>
+<a href="/<%= $u->id %>"><img src="<%= $u->image_url %>" style="padding:1px;border:1px solid #ccc;" width="48" height="48" /></a>
+<div style="text-overflow:ellipsis;overflow:hidden;font-size:13px;"><a href="/<%= $u->id %>">@<%= $u->screen_name %></a></div>
 </div>
 % }
 <div style="clear:both"></div>

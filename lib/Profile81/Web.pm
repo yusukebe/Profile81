@@ -68,6 +68,7 @@ sub startup {
     $r->post('/profile/delete')->to('profile#delete');
     $r->get('/tag/:tag_name')->to('tag#tag');
     $r->get('/search')->to('root#search');
+    $r->get('/about')->to('about#index');
 }
 
 1;

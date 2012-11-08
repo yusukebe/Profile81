@@ -10,16 +10,19 @@
 <p>
   <a href="/profile">プロフィールを編集する</a>
   / <a href="/logout">ログアウトする</a>
+  / <a href="/about">1981忘年会について</a>
 </p>
 % }else{
 <form action="/register" method="post">
   <button>参加登録をする</button>
   <a href="/logout">ログアウトする</a>
+  / <a href="/about">1981忘年会について</a>
 </form>
 % }
 % }else {
 <p>
   <a href="/login/twitter">Twitterログインをする</a>
+  / <a href="/about">1981忘年会について</a>
 </p>
 % }
 
@@ -27,9 +30,10 @@
 <h3>登録者一覧</h3>
 
 % for my $u (@$users) {
-<div style="float:left; width:90px;height:100px;text-align:center;">
-<a href="/<%= $u->id %>"><img src="<%= $u->image_url %>" style="padding:1px;border:1px solid #ccc;"/></a>
-<div><a href="/<%= $u->id %>">@<%= $u->screen_name %></a></div>
+<div style="float:left; width:90px;height:110px;text-align:center;">
+<div><b><%= $u->id %></b></div>
+<a href="/<%= $u->id %>"><img src="<%= $u->image_url %>" style="padding:1px;border:1px solid #ccc;" width="48" height="48" /></a>
+<div style="text-overflow:ellipsis;overflow:hidden;font-size:13px;"><a href="/<%= $u->id %>">@<%= $u->screen_name %></a></div>
 </div>
 % }
 <div style="clear:both"></div>
@@ -37,5 +41,5 @@
 <h3>タグ一覧</h3>
 
 % for my $t (@$tags) {
-<a style="margin-bottom:1em;" href="/tag/<%= b($t->tag_name)->encode->url_escape %>"><span class="round label"><%= $t->label %></span></a>
+<a href="/tag/<%= b($t->tag_name)->encode->url_escape %>"><span class="round label" style="line-height:30px;"><%= $t->label %></span></a>
 % }
